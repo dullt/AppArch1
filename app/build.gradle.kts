@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -48,6 +49,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,4 +59,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
+
+    implementation("io.ktor:ktor-client-core:1.6.8")
+    implementation("io.ktor:ktor-client-cio:1.6.8")
+    implementation("io.ktor:ktor-client-serialization:1.6.8")
 }
