@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
             AppArch1Theme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    topBar = { ApplicationTopAppBar("Navnapp") }) { innerPadding ->
+                    topBar = { ApplicationTopAppBar("Navne-app") }) { innerPadding ->
                     MainScreen(
                         modifier = Modifier
                             .fillMaxSize()
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier, viewModel: NameViewModel) {
-    // TODO: Use viewmodel to keep track of names
+    // TODO: Bruk viewmodel for å hente ut liste med navn
 
     Column(
         modifier = modifier
@@ -69,7 +69,7 @@ fun MainScreen(modifier: Modifier, viewModel: NameViewModel) {
         InputComponent(modifier = Modifier)
         Spacer(modifier = Modifier.size(8.dp))
 
-        //TODO: Show the names when they are available in the UiState
+        //TODO: vis liste med navn når de blir tilgjengelige i state
         ResultComponent(modifier = Modifier, names = listOf())
     }
 }
@@ -92,6 +92,8 @@ fun InputComponent(modifier: Modifier) {
             label = { Text(text = "Skriv noe") }
         )
         Spacer(modifier = Modifier.size(8.dp))
+
+        //TODO: Implementer onClick med extension-function
         Button(onClick = { }) { Text(text = "Legg til") }
     }
 }
@@ -108,7 +110,7 @@ fun ResultComponent(modifier: Modifier, names: List<String>) {
 @Composable
 fun Result(modifier: Modifier, name: String) {
     Card(modifier = modifier.padding(8.dp)) {
-        Text(modifier = modifier.padding(8.dp),text = name)
+        Text(modifier = modifier.padding(8.dp), text = name)
     }
 }
 
@@ -144,7 +146,7 @@ fun PreviewResultComponent() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewResult() {
-    val name =  "Neque nisi interdum per donec facilisi duis convallis montes ullamcorper"
+    val name = "Neque nisi interdum per donec facilisi duis convallis montes ullamcorper"
     AppArch1Theme {
         Result(
             modifier = Modifier, name = name
@@ -158,8 +160,7 @@ fun ApplicationTopAppBar(title: String) {
     TopAppBar(
         title = {
             Text(text = title)
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
+        }, colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.primary
         )
