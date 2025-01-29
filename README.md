@@ -9,10 +9,10 @@
 - **Result** contains a Card displaying a String value
 
 ### API
-Fetch age based on name input form [Agify]([https://www.example.com](https://agify.io/documentation))
+Fetch age based on name input from [Agify](https://agify.io/documentation)
 
 ### Overview of app
-(![overview of app architecture](https://github.com/user-attachments/assets/ec04bfc9-ffb0-4a96-9095-0405ca23edda))
+![overview of app architecture](https://github.com/user-attachments/assets/ec04bfc9-ffb0-4a96-9095-0405ca23edda)
 
 ## TODO
 - Implement the NameViewModel containing a list of names 
