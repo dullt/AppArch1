@@ -12,7 +12,7 @@
 Fetch age based on name input form [Agify]([https://www.example.com](https://agify.io/documentation))
 
 ### Overview of app
-![an overwiew of application architecture](![AppArch1_2 drawio](https://github.com/user-attachments/assets/6f54fb68-5308-4ee3-879e-6f41550b1fdd))
+(![overview of app architecture](https://github.com/user-attachments/assets/ec04bfc9-ffb0-4a96-9095-0405ca23edda))
 
 ## TODO
 - Implement the NameViewModel containing a list of names 
