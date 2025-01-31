@@ -25,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -60,22 +61,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen(modifier: Modifier, viewModel: NameViewModel) {
     // TODO: Bruk viewmodel for å hente ut liste med navn
+    val names by viewModel.names.collectAsState()
 
     Column(
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        InputComponent(modifier = Modifier)
+        InputComponent(
+            modifier = Modifier,
+            onButtonClicked = { viewModel.addName(it) }
+        )
         Spacer(modifier = Modifier.size(8.dp))
 
         //TODO: vis liste med navn når de blir tilgjengelige i state
-        ResultComponent(modifier = Modifier, names = listOf())
+        ResultComponent(modifier = Modifier, names = names)
     }
 }
 
 @Composable
-fun InputComponent(modifier: Modifier) {
+fun InputComponent(modifier: Modifier, onButtonClicked: (String) -> Unit) {
     var input by remember { mutableStateOf("") }
 
     Row(
@@ -94,7 +99,7 @@ fun InputComponent(modifier: Modifier) {
         Spacer(modifier = Modifier.size(8.dp))
 
         //TODO: Implementer onClick med extension-function
-        Button(onClick = { }) { Text(text = "Legg til") }
+        Button(onClick = { onButtonClicked(input) }) { Text(text = "Legg til") }
     }
 }
 
@@ -120,7 +125,8 @@ fun Result(modifier: Modifier, name: String) {
 fun PreviewInputComponent() {
     AppArch1Theme {
         InputComponent(
-            modifier = Modifier
+            modifier = Modifier,
+            onButtonClicked = { }
         )
     }
 }
